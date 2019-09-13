@@ -15,4 +15,10 @@
 class User < ApplicationRecord
   has_secure_password
   enum user_type: [:farmer, :consumer, :admin]
+
+  def is_admin?
+    self.user_type == 'admin'
+  end
+
+
 end
