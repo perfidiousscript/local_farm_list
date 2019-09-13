@@ -7,17 +7,23 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @current_user.is_admin?
+      @update_user = User.find(params[:id])
+    else
+      @update_user = @current_user
+    end
+    render json: @update_user if @update_user.update(user_params)
   end
 
   def destroy
   end
 
   def show
-    if @current_user.is_admin? or @current_user.id == params[:id].to_i
+    if @current_user.is_admin?
       @user = User.find(params[:id])
       render json: @user if @user
     else
-      render json: {message: 'Cannot render user'}
+      render json: @current_user
     end
   end
 
