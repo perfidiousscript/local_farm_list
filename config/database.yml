@@ -22,7 +22,7 @@ test:
 
 production:
   <<: *default
-  host: localhost
+  host: ""
   adapter: postgresql
   encoding: utf8
   database: local_farm_prod
