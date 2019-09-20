@@ -22,4 +22,10 @@ test:
 
 production:
   <<: *default
+  host: ''
+  adapter: postgresql
+  encoding: utf8
   database: local_farm_prod
+  pool: 5
+  username: <%= ENV['LOCAL_FARM_APP_DATABASE_USER'] %>
+  password: <%= ENV['LOCAL_FARM_APP_DATABASE_PASSWORD'] %>
