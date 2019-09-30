@@ -23,12 +23,14 @@ class User < ApplicationRecord
     self.user_type == 'admin'
   end
 
+  # Necessary for geocoder gem
   def location
     [latitude, longitude].compact.join
   end
 
-  def search_local_users
-    geo_search(latitude,longitude)
+  # Seaches for all users in the DB (defaulting to farmers) within 5 miles.
+  def search_local_users(distance = 5, user_type = 'farmer')
+    geo_search(latitude, longitude, distance, user_type)
   end
 
 end
