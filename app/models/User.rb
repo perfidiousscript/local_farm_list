@@ -9,6 +9,7 @@
 #  user_type       :integer
 #  latitude        :float
 #  longitude       :float
+#  farms_id        :bigint
 #
 
 
@@ -18,6 +19,7 @@ class User < ApplicationRecord
   enum user_type: [:farmer, :consumer, :admin]
   geocoded_by :address
   after_validation :geocode
+  has_many :farms
 
   def is_admin?
     self.user_type == 'admin'
