@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_secure_password
   enum user_type: [:farmer, :consumer, :admin]
   geocoded_by :address
-  after_validation :geocode
+  after_validation :location
   has_many :farms
 
   def is_admin?

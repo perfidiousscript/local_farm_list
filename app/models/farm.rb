@@ -7,13 +7,19 @@
 #  latitude  :float
 #  longitude :float
 #  users_id  :bigint
+#  products  :jsonb            not null
 #
 
 class Farm < ApplicationRecord
   include GeoLocatable
-  geocoded_by :address
+  geocoded_by :location
   after_validation :geocode
   belongs_to :user
 
-  
+  # Necessary for geocoder gem
+  def location
+    [latitude, longitude].compact.join
+  end
+
+
 end

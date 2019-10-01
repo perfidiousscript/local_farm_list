@@ -5,6 +5,6 @@ class CreateFarms < ActiveRecord::Migration[6.0]
       t.float :latitude
       t.float :longitude
     end
-    add_reference :farms, :users
+    add_reference :farms, :user
   end
 end

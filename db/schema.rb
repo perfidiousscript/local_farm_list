@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 2019_10_01_180634) do
     t.string "farm_name"
     t.float "latitude"
     t.float "longitude"
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.jsonb "products", default: "{}", null: false
     t.index ["products"], name: "index_farms_on_products", using: :gin
-    t.index ["users_id"], name: "index_farms_on_users_id"
+    t.index ["user_id"], name: "index_farms_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
