@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_13_135023) do
+ActiveRecord::Schema.define(version: 2019_10_01_173951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "farms", force: :cascade do |t|
+    t.string "farm_name"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "users_id"
+    t.index ["users_id"], name: "index_farms_on_users_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "user_name"
@@ -22,6 +30,8 @@ ActiveRecord::Schema.define(version: 2019_09_13_135023) do
     t.integer "user_type"
     t.float "latitude"
     t.float "longitude"
+    t.bigint "farms_id"
+    t.index ["farms_id"], name: "index_users_on_farms_id"
   end
 
 end
