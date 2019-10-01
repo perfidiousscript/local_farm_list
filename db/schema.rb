@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_01_173951) do
+ActiveRecord::Schema.define(version: 2019_10_01_180634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2019_10_01_173951) do
     t.float "latitude"
     t.float "longitude"
     t.bigint "users_id"
+    t.jsonb "products", default: "{}", null: false
+    t.index ["products"], name: "index_farms_on_products", using: :gin
     t.index ["users_id"], name: "index_farms_on_users_id"
   end
 
