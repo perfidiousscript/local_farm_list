@@ -1,0 +1,29 @@
+farmer_1:
+  id: 1
+  user_name: "farmer_1"
+  email: "farmer_1@fake.com"
+  password_digest: "string"
+  user_type: "farmer"
+  latitude: 35.6
+  longitude: -35.6
+  farms_id: nil
+
+consumer_1:
+  id: 2
+  user_name: "consumer_1"
+  email: "consumer_1@fake.com"
+  password_digest: "string"
+  user_type: "consumer"
+  latitude: 35.6
+  longitude: -35.6
+  farms_id: nil
+
+consumer_2:
+  id: 3
+  user_name: "consumer_2"
+  email: "consumer_2@fake.com"
+  password_digest: "string"
+  user_type: "consumer"
+  latitude: 35.6
+  longitude: 35.6
+  farms_id: nil

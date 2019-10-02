@@ -1,0 +1,7 @@
+farm_1:
+  id: 1
+  farm_name: "Farmy Farm"
+  latitude: 35.6
+  longitude: -35.6
+  user_id: 1
+  products: '{"meat"=>["chicken"], "produce"=>["carrots", "celery"]}'
