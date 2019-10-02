@@ -1,11 +1,16 @@
 module GeoLocatable
   extend ActiveSupport::Concern
 
-  def geo_search(lat, long, distance, user_type)
-    local_user_list = User.near([lat,long], distance)
-    unless user_type == 'all'
-      local_user_list = local_user_list.where(user_type: user_type)
+  def geo_search(lat, long, distance, search_type)
+    case search_type
+    when 'all'
+      local_list = User.near([lat,long], distance)
+    when 'farmer' || 'consumer'
+      local_list = User.near([lat,long], distance)
+      local_list = local_list.where(user_type: search_type)
+    when 'farms'
+      local_list = Farm.near([lat,long], distance)
     end
-    local_user_list
+    local_list
   end
 end

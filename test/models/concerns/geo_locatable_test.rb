@@ -10,33 +10,37 @@ class GeoLocatableTest < ActiveSupport::TestCase
   end
 
   def test_geo_search_calls
-    assert(
+    assert_equal(
       0,
       @dummy.geo_search(0, 0, 5, 'all').length,
     )
   end
 
   def test_geo_search_returns_all_users
-    assert(
-      2,
-      @dummy.geo_search(35.6, -35.6, 5, 'all').length,
+    assert_equal(
+      ["farmer_1", "consumer_1"],
+      @dummy.geo_search(35.6, -35.6, 5, 'all').to_a.collect{|x| x[:user_name]},
     )
   end
 
   def test_geo_search_returns_farmers
-    assert(
-      1,
-      @dummy.geo_search(35.6, -35.6, 5, 'farmer').length,
+    assert_equal(
+      ["farmer_1"],
+      @dummy.geo_search(35.6, -35.6, 5, 'farmer').to_a.collect{|x| x[:user_name]},
     )
   end
 
   def test_geo_search_returns_users
-    assert(
-      1,
-      @dummy.geo_search(35.6, 35.6, 5, 'all').length,
+    assert_equal(
+      ["consumer_2"],
+      @dummy.geo_search(35.6, 35.6, 5, 'all').to_a.collect{|x| x[:user_name]},
     )
   end
 
-
-
+  def test_geo_search_returns_farms
+    assert_equal(
+      "Farmy Farm",
+      @dummy.geo_search(35.6, -35.6, 5, 'farms').first[:farm_name],
+    )
+  end
 end
