@@ -21,5 +21,4 @@ class Farm < ApplicationRecord
     [latitude, longitude].compact.join
   end
 
-
 end
